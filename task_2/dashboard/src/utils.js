@@ -10,3 +10,9 @@ export function getFooterCopy(isIndex) {
   }
   return 'Holberton School main dashboard';
 }
+
+// task_2
+
+export function getLatestNotification() {
+  return '<strong>Urgent requirement</strong> - complete by EOD';
+}

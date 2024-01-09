@@ -5,3 +5,14 @@
   font-style:italic;
   color:rgb(9, 195, 37);
 }
+
+
+/* task_2/dashboard/src/Notifications.css */
+
+.Notifications ul li[data-priority="default"] {
+  color: blue;
+}
+
+.Notifications ul li[data-priority="urgent"] {
+  color: red;
+}
