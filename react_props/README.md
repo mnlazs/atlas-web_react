@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="react-icon.png" alt="React Logo" width="600"/>
+  <img src="React-icon.png" alt="React Logo" width="350"/>
 </p>
 
 # My React Project :sparkles:
