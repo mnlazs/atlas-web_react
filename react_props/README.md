@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 <img src="images/react-logo.png" alt="React Logo" width="200"/>
+=======
+<p align="center">
+  <img src="react-logo.png" alt="React Logo" width="600"/>
+</p>
+
+>>>>>>> 0e9d69f8ec339999f69efee23f589c5c98512d2c
 # My React Project :sparkles:
 
 ## :bulb: Description
@@ -42,4 +49,25 @@ Through this project, I've gained knowledge and experience in various aspects of
 - Learned the importance of using the `key` prop in loops to provide a unique identifier for React elements.
 - This practice optimizes performance, especially in large lists and dynamic content.
 
-By the end of this project, I've not only grasped these fundamental concepts but also applied them practically, paving the way for more advanced React development.
+## :computer: Code Example
+
+```javascript
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const Greeting = ({ name }) => <h1>Hello, {name}!</h1>;
+
+Greeting.propTypes = {
+  name: PropTypes.string.isRequired,
+};
+
+export default Greeting;
+ ```
+
+:sunglasses: Author
+Manuel Zambrano
+
+GitHub: @mnlazs
+Crafting with :heart: and a bunch of :coffee:.
+
+
