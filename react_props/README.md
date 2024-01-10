@@ -1,4 +1,4 @@
-<img src="images/react-logo.jpeg" alt="React Logo" width="200"/>
+<img src="images/react-logo.png" alt="React Logo" width="200"/>
 # My React Project :sparkles:
 
 ## :bulb: Description
