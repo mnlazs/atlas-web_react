@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="images/react-logo.jpeg" alt="React Logo" width="200"/>
-</p>
+<img src="images/react-logo.jpeg" alt="React Logo" width="200"/>
 # My React Project :sparkles:
 
 ## :bulb: Description
