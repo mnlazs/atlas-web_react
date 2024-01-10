@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-<img src="images/react-logo.png" alt="React Logo" width="200"/>
-=======
 <p align="center">
   <img src="react-logo.png" alt="React Logo" width="600"/>
 </p>
 
->>>>>>> 0e9d69f8ec339999f69efee23f589c5c98512d2c
 # My React Project :sparkles:
 
 ## :bulb: Description
