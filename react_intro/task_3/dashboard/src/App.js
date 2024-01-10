@@ -13,7 +13,6 @@ function App() {
       </header>
       <body className="App-body">
         <p>Login to access the full dashboard</p>
-        <p>Login to access the full dashboard:</p>
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" />
             
