@@ -1,8 +1,7 @@
-// task_2/dashboard/src/Notifications.js
 import React from 'react';
 import './Notifications.css';
-import closeIcon from './close-icon.png'; // Importa la imagen close-icon.png
-import { getLatestNotification } from './utils';
+import closeIcon from '../assets/close-icon.png';
+import { getLatestNotification } from '../utils/utils';
 
 export default function Notifications() {
   const handleButtonClick = () => {

@@ -6,9 +6,9 @@ export function getFullYear() {
 // Retorna un texto dependiendo del valor de isIndex
 export function getFooterCopy(isIndex) {
   if (isIndex) {
-    return 'Holberton School';
+    return 'Atlas School';
   }
-  return 'Holberton School main dashboard';
+  return 'Atlas School main dashboard';
 }
 
 // task_2
