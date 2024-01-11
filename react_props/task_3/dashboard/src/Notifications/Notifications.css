@@ -10,7 +10,7 @@
 /* task_2/dashboard/src/Notifications.css */
 
 .Notifications ul li[data-priority="default"] {
-  color: blue;
+  color: rgb(80, 4, 231);
 }
 
 .Notifications ul li[data-priority="urgent"] {
