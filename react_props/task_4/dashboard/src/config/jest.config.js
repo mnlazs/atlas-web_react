@@ -3,6 +3,7 @@ module.exports = {
   testPathIgnorePatterns: ["/node_modules/"],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  moduleNameMapper: { "\\.(css|less)$": "<rootDir>/styleMock.js"},
 
   // Directorio donde Jest buscará los tests
   roots: ["<rootDir>/src"],
@@ -12,7 +13,7 @@ module.exports = {
 
   // Configuración para transformar archivos con babel-jest
   transform: {
-      "^.+\\.(js|jsx)$": "babel-jest"
+       "^.+\\.[t|j]sx?$": "babel-jest"
   },
 
   // Configuración para el uso de `@testing-library/react`
