@@ -59,11 +59,46 @@ Greeting.propTypes = {
 
 export default Greeting;
  ```
+## Desarrollo y Ejecución de Pruebas
 
-:sunglasses: Author
+Para desarrollar pruebas de manera eficiente y observar sus resultados en tiempo real, puedes configurar un script para ejecutar tu suite de pruebas automáticamente con cada cambio realizado:
+
+1. **Configuración del Script de Observación:**
+   Añade el siguiente script a tu `package.json` bajo la sección `scripts`:
+   ```json
+   "test-watch": "jest --watch"
+
+### Ejecutar Suite de Pruebas:
+Utiliza el siguiente comando para ejecutar tu suite de pruebas:
+```bash
+npm run test
+```
+  <img src="test-image.png" alt="test image" width="350" style="float:left"/>
+
+
+## Pruebas Específicas
+
+### `Header.test.js`:
+- **Renderizado Superficial:** Asegura que el componente `Header` se renderiza sin problemas.
+- **Verificación de Tags:** Confirma que el componente renderiza etiquetas `img` y `h1`.
+
+### `Login.test.js`:
+- **Renderizado Superficial:** Verifica que el componente `Login` se renderiza correctamente.
+- **Verificación de Tags:** Comprueba que se renderizan 2 etiquetas `input` y 2 etiquetas `label`.
+
+### `Footer.test.js`:
+- **Renderizado Superficial:** Valida que el componente `Footer` se renderiza sin problemas.
+- **Verificación de Contenido:** Asegura que, como mínimo, se renderiza el texto “Copyright”.
+
+### `App.test.js`:
+- **Contenido del Componente:** Verifica la presencia de los componentes `Notifications`, `Header`, `Login` y `Footer` dentro del componente principal `App`.
+
+
+## :sunglasses: Author
 Manuel Zambrano
 
-GitHub: @mnlazs
+- [my Github](https://github.com/mnlazs)
+
 Crafting with :heart: and a bunch of :coffee:.
 
 
