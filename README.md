@@ -1,8 +1,9 @@
 ![GIF Animado](https://media.giphy.com/media/INt804DkZRTvW/giphy.gif)
 
 <p align="center">
-  <img src="components.jpeg" alt="Descripción de la imagen"/>
+  <img src="component.png" alt="Descripción de la imagen" width="300" height="200"/>
 </p>
+
 
 
 # Comprehensive React Guide 🚀
