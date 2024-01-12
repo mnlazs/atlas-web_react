@@ -130,3 +130,11 @@ To run the tests, use the following command:
 npm test
 ```
 
+## :sunglasses: Author
+Manuel Zambrano
+
+- [my Github](https://github.com/mnlazs)
+
+Crafting with :heart: and a bunch of :coffee:.
+
+
