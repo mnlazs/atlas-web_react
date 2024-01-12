@@ -58,5 +58,29 @@ describe('Pruebas del componente App', () => {
     it('debe incluir el componente CourseList', () => {
       expect(wrapper.find(CourseList).exists()).toBeTruthy();
     });
+
+    describe('Pruebas de manejo de teclas', () => {
+      it('debe llamar a logOut y mostrar una alerta cuando se presionan las teclas ctrl+h', () => {
+        const logOutMock = jest.fn();
+        const originalAlert = window.alert;
+        window.alert = jest.fn();
+  
+        // Crear una instancia del componente App
+        const wrapper = shallow(<App logOut={logOutMock} />);
+  
+        // Obtener la instancia del componente y espiar el método handleKeyPress
+        const instance = wrapper.instance();
+        jest.spyOn(instance, 'handleKeyPress');
+  
+        // Simular la presión de las teclas ctrl+h
+        instance.handleKeyPress({ key: 'h', ctrlKey: true });
+  
+        // Verificar que logOut y alert fueron llamados
+        expect(logOutMock).toHaveBeenCalled();
+        expect(window.alert).toHaveBeenCalledWith('Logging you out');
+  
+        window.alert = originalAlert;
+      });
+    });
   });
-});
+})

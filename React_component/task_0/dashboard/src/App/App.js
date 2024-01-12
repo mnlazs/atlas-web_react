@@ -15,6 +15,23 @@ class App extends Component {
       displayDrawer: false
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyPress);
+  }
+
+  handleKeyPress(event) {
+    if (event.ctrlKey && event.key === 'h') {
+      event.preventDefault();
+      alert('Logging you out');
+      this.props.logOut();
+    }
   }
 
   toggleDrawer() {
@@ -46,11 +63,13 @@ class App extends Component {
 }
 
 App.propTypes = {
-  isLoggedIn: PropTypes.bool
+  isLoggedIn: PropTypes.bool,
+  logOut: PropTypes.func
 };
 
 App.defaultProps = {
-  isLoggedIn: false
+  isLoggedIn: false,
+  logOut: () => {}
 };
 
 export default App;
