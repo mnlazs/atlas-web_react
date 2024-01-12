@@ -14,7 +14,7 @@ function Notifications({ displayDrawer }) {
     <>
       <div className="menuItem">
         <p>Your notifications</p>
-      </div>
+      </div> 
       {displayDrawer && (
         <div className="Notifications">
           <button

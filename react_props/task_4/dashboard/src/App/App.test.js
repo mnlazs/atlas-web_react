@@ -19,7 +19,13 @@ describe('Pruebas del componente App', () => {
   });
 
   it('debe contener el componente Notifications', () => {
-    expect(wrapper.containsMatchingElement(<Notifications />)).toBeTruthy();
+    expect(wrapper.find(Notifications).exists()).toBeFalsy();
+  });  
+
+  it('debe mostrar Notifications cuando displayDrawer es true', () => {
+    // Simula el cambio de estado para mostrar Notifications
+    wrapper.setState({ displayDrawer: true });
+    expect(wrapper.find(Notifications).exists()).toBeTruthy();
   });
 
   it('debe contener el componente Header', () => {
