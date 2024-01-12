@@ -1,3 +1,6 @@
+![GIF Animado](https://media.giphy.com/media/INt804DkZRTvW/giphy.gif)
+
+
 # Comprehensive React Guide 🚀
 
 React is a JavaScript library for building user interfaces. Maintained by Facebook and a community of individual developers and companies, React can be used to develop single-page applications and mobile apps.
