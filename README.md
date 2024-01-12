@@ -1,7 +1,7 @@
 ![GIF Animado](https://media.giphy.com/media/INt804DkZRTvW/giphy.gif)
 
 <p align="center">
-  <img src="component.png" alt="Descripción de la imagen" width="300" height="200"/>
+  <img src="pngaaa.com-2507875.png" alt="Descripción de la imagen" width="300" height="200"/>
 </p>
 
 
