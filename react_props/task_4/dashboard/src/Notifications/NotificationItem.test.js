@@ -1,23 +1,26 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import NotificationItem from './NotificationItem';
+import { shallow } from 'enzyme';
+import CourseListRow from '../CourseList/CourseListRow';
 
-describe('NotificationItem', () => {
-  it('renders without crashing', () => {
-    render(<NotificationItem type="default" value="test" />);
-    // O shallow(<NotificationItem type="default" value="test" />); para Enzyme
+describe('<CourseListRow />', () => {
+  // Cuando isHeader es true
+  it('renderiza una celda con colspan = 2 cuando textSecondCell no existe', () => {
+    const wrapper = shallow(<CourseListRow isHeader={true} textFirstCell="First cell" />);
+    const thElement = wrapper.find('th').first();
+    expect(thElement.exists()).toBe(true);
+    expect(thElement.props().colSpan).toBe(2);
   });
 
-  it('renders correct html with type and value', () => {
-    const { getByText } = render(<NotificationItem type="default" value="test" />);
-    const item = getByText('test');
-    expect(item).toBeInTheDocument();
-    expect(item).toHaveAttribute('data-notification-type', 'default');
+  it('renderiza dos celdas cuando textSecondCell está presente', () => {
+    const wrapper = shallow(<CourseListRow isHeader={true} textFirstCell="First cell" textSecondCell="Second cell" />);
+    const thElements = wrapper.find('th');
+    expect(thElements).toHaveLength(2);
   });
 
-  it('renders correct html with dangerouslySetInnerHTML', () => {
-    const html = { __html: '<u>test</u>' };
-    const { container } = render(<NotificationItem html={html} />);
-    expect(container.querySelector('u')).toBeInTheDocument();
+  // Cuando isHeader es false
+  it('renderiza correctamente dos elementos td dentro de un elemento tr', () => {
+    const wrapper = shallow(<CourseListRow isHeader={false} textFirstCell="First cell" textSecondCell="Second cell" />);
+    const tdElements = wrapper.find('td');
+    expect(tdElements).toHaveLength(2);
   });
 });
