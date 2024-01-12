@@ -1,20 +1,19 @@
-![GIF Animado](https://media.giphy.com/media/INt804DkZRTvW/giphy.gif)
 
 <p align="center">
   <img src="pngaaa.com-2507875.png" alt="Descripción de la imagen" width="300" height="200"/>
 </p>
 
-
-
 # Comprehensive React Guide 🚀
 
 React is a JavaScript library for building user interfaces. Maintained by Facebook and a community of individual developers and companies, React can be used to develop single-page applications and mobile apps.
+
 
 ## Why React? 🤔
 
 - **Reusable Components:** React is based on components, which facilitates code reuse.
 - **Declarative:** React makes creating interactive UIs simple and predictable.
 - **Community-Driven Learning:** A large community of developers and extensive documentation.
+<img src="https://media.giphy.com/media/INt804DkZRTvW/giphy.gif" alt="GIF Animado" width="340"/>
 
 ## Basic Concepts 📘
 
