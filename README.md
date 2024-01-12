@@ -146,6 +146,11 @@ React is an incredibly powerful and flexible tool for building UIs. With its com
 
 Happy coding with React! 🎉
 
+## :sunglasses: Author
+Manuel Zambrano
+
+- [my Github](https://github.com/mnlazs)
+
 
 
 
