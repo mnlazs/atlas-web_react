@@ -13,8 +13,7 @@ React is a JavaScript library for building user interfaces. Maintained by Facebo
 - **Reusable Components:** React is based on components, which facilitates code reuse.
 - **Declarative:** React makes creating interactive UIs simple and predictable.
 - **Community-Driven Learning:** A large community of developers and extensive documentation.
-<img src="https://media.giphy.com/media/INt804DkZRTvW/giphy.gif" alt="GIF Animado" width="340"/>
-
+  
 ## Basic Concepts 📘
 
 ### JSX
