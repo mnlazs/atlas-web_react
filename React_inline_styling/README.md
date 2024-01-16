@@ -1,4 +1,8 @@
-# Web Design Fundamentals Project
+
+# Web Design Fundamentals Project 🎨
+<p align="center">
+  <img src="https://media.giphy.com/media/YTzh3zw4mj1XpjjiIb/giphy.gif" width="300" height="300" />
+</p>
 
 This README aims to explain the key concepts of web styling and design, focusing on various techniques and practices used in modern web development.
 
@@ -109,4 +113,11 @@ Example:
 }
 
 ```
+
+## :sunglasses: Author
+Manuel Zambrano
+
+- [my Github](https://github.com/mnlazs)
+
+
 
