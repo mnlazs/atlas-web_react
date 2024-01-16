@@ -110,6 +110,20 @@ menuItem: {
     fontSize: '20px',
     cursor: 'pointer',
 },
+body: {
+  fontSize: '16px',
+  fontFamily: "'Franklin Gothic Medium', 'Arial', sans-serif",
+  width: '100%', // Ocupa todo el ancho disponible
+  textAlign: 'center',
+  paddingTop: '20px', // Espacio en la parte superior
+  margin: '200px 0', // Añade un margen arriba y abajo
+},
+
+footer: {
+  borderTop: '2px solid #000',
+  fontFamily: "'Franklin Gothic Medium', 'Arial', sans-serif",
+  fontStyle: 'italic',
+},
 });
 
 export default App;
