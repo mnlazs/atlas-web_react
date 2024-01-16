@@ -89,15 +89,26 @@ App.defaultProps = {
 
 const styles = StyleSheet.create({
 app: {
-// Tus estilos para .App aquí (reemplaza con tus estilos reales)
+  textAlign: 'center',
+  backgroundColor: '#f3f3f3',
+  minHeight: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: 'calc(10px + 2vmin)',
+  color: 'black',
 },
 menuItem: {
-// Tus estilos para .menuItem aquí (reemplaza con tus estilos reales)
+  backgroundColor: '#282c34',
+    minHeight: '40px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
+    fontSize: '20px',
+    cursor: 'pointer',
 },
-// Agrega más estilos según sea necesario
 });
-
-
-
 
 export default App;

@@ -2,10 +2,10 @@ const path = require("path");
 
 module.exports = {
     mode: "development",
-    entry: path.resolve(__dirname, '../src/index.js'),
+    entry: path.resolve(__dirname, 'dist'),
     output: {
         filename: "bundle.js",
-        path: path.resolve(__dirname, "../src"),
+        path: path.resolve(__dirname, "dist"),
     },
     module: {
         rules: [
@@ -36,7 +36,7 @@ module.exports = {
     },
     devServer: {
         static: {
-            directory: path.join(__dirname, '../dist/'),
+            directory: path.join(__dirname, 'dashboard/public'),
         },
         compress: true,
         hot: true,

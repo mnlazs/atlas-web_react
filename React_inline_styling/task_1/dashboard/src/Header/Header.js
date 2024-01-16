@@ -1,17 +1,31 @@
 import React from 'react';
-import logo from '../assets/atlas_logo.webp';
-import './Header.css';
+import { StyleSheet, css } from 'aphrodite';
 
-
-function Header() {
+const Header = () => {
   return (
-    <header className="Header-main">
-        <img src={logo} className="Header-logo" alt="logo" />
-        <h1>
-          School dashboard
-        </h1>
-    </header>
+    <div className={css(styles.header)}>
+      <img src="logo.png" alt="Logo" className={css(styles.logo)} />
+      <h1 className={css(styles.title)}>Dashboard</h1>
+    </div>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: '#333',
+    color: '#fff',
+    padding: '10px',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  logo: {
+    width: '50px',
+    height: '50px',
+    marginRight: '10px',
+  },
+  title: {
+    fontSize: '24px',
+  },
+});
 
 export default Header;
