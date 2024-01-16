@@ -1,5 +1,6 @@
 import React from 'react';
 import App from './App';
+import { StyleSheetTestUtils } from 'aphrodite';
 import { shallow } from 'enzyme';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -8,6 +9,15 @@ import Notifications from '../Notifications/Notifications';
 import CourseList from '../CourseList/CourseList';
 
 describe('Pruebas del componente App', () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
+
+  afterAll(() => {
+    StyleSheetTestUtils.clearButfferAndResumeStyleInjection();
+  });
+
+  // todas las pruebas siguientes 
   it('se renderiza sin problemas', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.exists()).toBeTruthy();
