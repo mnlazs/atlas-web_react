@@ -32,6 +32,7 @@ This README aims to explain the key concepts of web styling and design, focusing
   background-color: blue;
   color: white;
 }
+```
 
 /* Inline Styling */
 <button style="background-color: blue; color: white;">Click Me</button>
@@ -57,4 +58,55 @@ const styles = StyleSheet.create({
 
 ```
 
+Conditional Styling in JavaScript
+🔄 Using Conditions for Dynamic Styles:
+
+You can apply different styles based on conditions in JavaScript.
+
+Example:
+
+```javascript
+const buttonStyle = {
+  backgroundColor: isLoggedIn ? 'blue' : 'gray',
+  color: 'white'
+};
+
+<button style={buttonStyle}>Login</button>
+```
+
+Responsive Design
+📱 Adapting UI to Screen Size:
+
+Responsive design allows your application's UI to adapt to different screen sizes using CSS media queries.
+
+Example:
+
+```css
+/* CSS File */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}
+```
+
+Creating Animations
+💫 Adding Motion to Elements:
+
+Small animations can enhance the user experience by providing visual feedback and making the interface feel more dynamic.
+
+Example:
+
+```css
+/* CSS File */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease;
+}
+
+```
 
