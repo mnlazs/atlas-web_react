@@ -6,10 +6,15 @@ describe ('Login Component Test', () => {
   let wrapper;
 
   beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
     wrapper = shallow(<Login />);
   });
 
-
+  afterEach(() => {
+    // Reanuda la inyección de estilos después de cada prueba
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+  });
+  
   it ('should render without crashing', () => {
     expect(wrapper).toBeTruthy();
   });
