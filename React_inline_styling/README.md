@@ -36,10 +36,11 @@ This README aims to explain the key concepts of web styling and design, focusing
   background-color: blue;
   color: white;
 }
-```
+
 
 /* Inline Styling */
 <button style="background-color: blue; color: white;">Click Me</button>
+```
 
 ## Using CSS-in-JS with Aphrodite
 ### 🎨 Introduction to Aphrodite:
