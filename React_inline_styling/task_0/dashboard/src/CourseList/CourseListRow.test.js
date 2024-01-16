@@ -23,4 +23,13 @@ describe('<CourseListRow />', () => {
     const tdElements = wrapper.find('td');
     expect(tdElements).toHaveLength(2);
   });
+  it('aplica el estilo de fondo correcto para las filas de encabezado', () => {
+    const wrapper = shallow(<CourseListRow isHeader={true} textFirstCell="First cell" />);
+    expect(wrapper.find('tr').prop('style')).toHaveProperty('backgroundColor', '#deb5b545');
+  });
+
+  it('aplica el estilo de fondo correcto para las filas normales', () => {
+    const wrapper = shallow(<CourseListRow isHeader={false} textFirstCell="First cell" />);
+    expect(wrapper.find('tr').prop('style')).toHaveProperty('backgroundColor', '#f5f5f5ab');
+  });
 });
