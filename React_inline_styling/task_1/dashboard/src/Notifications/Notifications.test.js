@@ -2,10 +2,18 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Notifications from './Notifications';
 import NotificationItem from './NotificationItem';
+import { StyleSheetTestUtils } from 'aphrodite';
+
 
 describe('<Notifications />', () => {
-  // ... tus pruebas existentes para Notifications
+  beforeEach (() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
 
+  afterEach(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+  });
+  
   it('does not rerender when the list of notifications has not changed in length', () => {
     const listNotifications = [
       { id: 1, type: 'default', value: 'New course available' },
