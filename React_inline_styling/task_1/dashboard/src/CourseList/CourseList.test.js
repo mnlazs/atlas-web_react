@@ -1,9 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { StyleSheetTestUtils } from 'aphrodite';
 import CourseList from './CourseList';
 import CourseListRow from './CourseListRow';
 
 describe('<CourseList />', () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+});
+afterAll(() => {
+  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
+
   it('renderiza correctamente con un array vacío o sin listCourses', () => {
     const wrapperEmpty = shallow(<CourseList listCourses={[]} />);
     expect(wrapperEmpty.find(CourseListRow).length).toBe(1); // Solo la fila 'No course available yet'
