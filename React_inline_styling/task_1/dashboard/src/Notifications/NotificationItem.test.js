@@ -1,20 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import NotificationItem from './NotificationItem';
-import { StyleSheetTestUtils } from 'aphrodite';
 
+// Importa StyleSheetTestUtils de la biblioteca correspondiente
+import { StyleSheetTestUtils } from 'aphrodite';
 
 describe('<NotificationItem />', () => {
   beforeEach(() => {
-    StyleSheetTestUtils.suppress
-    StyleInjection()
+    // Suprime la inyección de estilos antes de cada prueba
+    StyleSheetTestUtils.suppressStyleInjection();
   });
 
   afterEach(() => {
+    // Reanuda la inyección de estilos después de cada prueba
     StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
-    });
-    
-    
+  });
+
   it('calls markAsRead with the right ID when clicked', () => {
     const markAsReadSpy = jest.fn();
     const notificationId = 1; // Ejemplo de ID de notificación
