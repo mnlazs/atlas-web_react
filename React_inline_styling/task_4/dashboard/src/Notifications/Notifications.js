@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, css, keyframes } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite';
 import closeIcon from '../assets/close-icon.png';
 import  NotificationItemShape  from './NotificationItemShape';
 import NotificationItem from './NotificationItem';
+
 
 class Notifications extends Component {
   constructor(props) {
@@ -38,6 +39,22 @@ class Notifications extends Component {
             <button onClick={this.handleButtonClick} className={css(styles.closeButton)}>
               <img src={closeIcon} alt="Close" className={css(styles.closeIcon)} />
             </button>
+            {listNotifications.length === 0 ? (
+              <p>No new notifications</p>
+            ) : (
+              <ul>
+                {listNotifications.map(({ id, type, value, html }) => (
+                <NotificationItem
+                key={id}
+                type={type}
+                value={value}
+                html={html}
+                markAsRead={this.markAsRead}
+                id={id}
+                />
+                ))}
+              </ul>
+            )}
           </div>
         )}
       </>

@@ -1,6 +1,6 @@
 //biblioteca de importacion 
 import React, { Component } from 'react';
-import { StyleSheet } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
@@ -9,6 +9,7 @@ import CourseList from '../CourseList/CourseList';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../utils/utils';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   constructor(props) {
@@ -54,7 +55,7 @@ class App extends Component {
       <>
         <div className="menuItem" onClick={this.toggleDrawer}>Toggle Notifications</div>
         <Notifications displayDrawer={displayDrawer} listNotifications={listNotifications} />
-        <div className="App">
+        <div className={css(styles.app)}>
           <Header />
           {isLoggedIn ? (
             <BodySectionWithMarginBottom title="Course list">
