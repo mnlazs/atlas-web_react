@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
+
+
 const styles = StyleSheet.create({
   notifications: {
     border: '2px solid rgb(9, 195, 37)',

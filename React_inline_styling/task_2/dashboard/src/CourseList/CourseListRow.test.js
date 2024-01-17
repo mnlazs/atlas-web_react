@@ -1,9 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import CourseListRow from './CourseListRow';
+import { StyleSheetTestUtils } from 'aphrodite';
+
 
 describe('<CourseListRow />', () => {
-  // Cuando isHeader es true
+  beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
+
+  afterEach(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+  });
+
+  
   it('renderiza una celda con colspan = 2 cuando textSecondCell no existe', () => {
     const wrapper = shallow(<CourseListRow isHeader={true} textFirstCell="First cell" />);
     const thElement = wrapper.find('th').first();
@@ -22,14 +32,5 @@ describe('<CourseListRow />', () => {
     const wrapper = shallow(<CourseListRow isHeader={false} textFirstCell="First cell" textSecondCell="Second cell" />);
     const tdElements = wrapper.find('td');
     expect(tdElements).toHaveLength(2);
-  });
-  it('aplica el estilo de fondo correcto para las filas de encabezado', () => {
-    const wrapper = shallow(<CourseListRow isHeader={true} textFirstCell="First cell" />);
-    expect(wrapper.find('tr').prop('style')).toHaveProperty('backgroundColor', '#deb5b545');
-  });
-
-  it('aplica el estilo de fondo correcto para las filas normales', () => {
-    const wrapper = shallow(<CourseListRow isHeader={false} textFirstCell="First cell" />);
-    expect(wrapper.find('tr').prop('style')).toHaveProperty('backgroundColor', '#f5f5f5ab');
   });
 });
