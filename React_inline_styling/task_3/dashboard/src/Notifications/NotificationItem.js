@@ -1,73 +1,112 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, css } from 'aphrodite';
+import { StyleSheet, css, keyframes } from 'aphrodite';
+import closeIcon from '../assets/close-icon.png';
+import { NotificationItemShape } from './NotificationItemShape';
+import NotificationItem from './NotificationItem';
 
+class Notifications extends Component {
+  constructor(props) {
+    super(props);
+    this.markAsRead = this.markAsRead.bind(this);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
+  }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.listNotifications.length > this.props.listNotifications.length;
+  }
+
+  markAsRead(id) {
+    console.log(`Notification ${id} has been marked as read`);
+  }
+
+  handleButtonClick() {
+    console.log('Close button has been clicked');
+  }
+
+  render() {
+    const { displayDrawer, listNotifications } = this.props;
+    return (
+      <>
+        {displayDrawer ? null : (
+          <div className={css(styles.menuItem)}>
+            <p>Your notifications</p>
+          </div>
+        )}
+        {displayDrawer && (
+          <div className={css(styles.notificationsPanel)}>
+            {/* ... el resto de tu componente ... */}
+          </div>
+        )}
+      </>
+    );
+  }
+}
+
+// Definición de las animaciones
+const bounce = keyframes({
+  '0%': {
+    transform: 'translateY(0)',
+  },
+  '50%': {
+    transform: 'translateY(-5px)',
+  },
+  '100%': {
+    transform: 'translateY(0)',
+  },
+});
+
+const fadeIn = keyframes({
+  'from': {
+    opacity: 0.5,
+  },
+  'to': {
+    opacity: 1,
+  },
+});
+
+// Estilos del componente
 const styles = StyleSheet.create({
-  notifications: {
+  notificationsPanel: {
     border: '2px solid rgb(9, 195, 37)',
     padding: '10px',
     fontFamily: 'Franklin Gothic Medium, Arial, sans-serif',
     fontStyle: 'italic',
     color: 'rgb(9, 195, 37)',
+    backgroundColor: 'lightgray',
+    borderRadius: '5px',
+    maxWidth: '300px',
+    position: 'fixed',
+    top: '30px',
+    right: '10px',
+    zIndex: '100',
   },
-  default: {
-    color: 'rgb(80, 4, 231)',
+  menuItem: {
+    float: 'right',
+    backgroundColor: '#fff8f8',
+    cursor: 'pointer',
+    ':hover': {
+      animationName: [fadeIn, bounce],
+      animationDuration: '1s, 0.5s',
+      animationIterationCount: '3',
+    },
   },
-  urgent: {
-    color: 'red',
+  // ... otros estilos ...
+  closeIcon: {
+    float: 'right',
+    cursor: 'pointer',
   },
-  // Nuevos estilos
-  notificationItem: {
-    width: '100%', // Toma todo el ancho de la pantalla
-    borderBottom: '1px solid black', // Borde negro en la parte inferior
-    fontSize: '20px', // Tamaño de fuente de 20px
-    padding: '10px 8px', // Padding de 10px en la parte superior e inferior, 8px en los lados
-  },
+  // ... otros estilos ...
 });
 
-class NotificationItem extends PureComponent {
-  render() {
-    const { type, html, value, markAsRead, id } = this.props;
-
-    // Aplicar estilos basados en el tipo
-    const style = [type === 'default' ? styles.default : styles.urgent, styles.notificationItem];
-
-    const listItemContent = html ? (
-      <li
-        className={css(style)}
-        data-notification-type={type}
-        dangerouslySetInnerHTML={html}
-        onClick={() => markAsRead(id)}
-      ></li>
-    ) : (
-      <li
-        className={css(style)}
-        data-notification-type={type}
-        onClick={() => markAsRead(id)}
-      >
-        {value}
-      </li>
-    );
-
-    return (
-      <div className={css(styles.notifications)}>
-        <ul>
-          {listItemContent}
-        </ul>
-      </div>
-    );
-  }
-}
-
-NotificationItem.propTypes = {
-  html: PropTypes.shape({
-    __html: PropTypes.string,
-  }),
-  type: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  markAsRead: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired
+Notifications.propTypes = {
+  displayDrawer: PropTypes.bool,
+  listNotifications: PropTypes.arrayOf(NotificationItemShape)
 };
 
-export default NotificationItem;
+Notifications.defaultProps = {
+  displayDrawer: false,
+  listNotifications: []
+};
+
+export default Notifications;

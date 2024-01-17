@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, css, keyframes } from 'aphrodite';
 import closeIcon from '../assets/close-icon.png';
-import { NotificationItemShape } from './NotificationItemShape';
+import  NotificationItemShape  from './NotificationItemShape';
 import NotificationItem from './NotificationItem';
 
 class Notifications extends Component {
@@ -35,7 +35,9 @@ class Notifications extends Component {
         )}
         {displayDrawer && (
           <div className={css(styles.notificationsPanel)}>
-            {/* ... el resto de tu componente ... */}
+            <button onClick={this.handleButtonClick} className={css(styles.closeButton)}>
+              <img src={closeIcon} alt="Close" className={css(styles.closeIcon)} />
+            </button>
           </div>
         )}
       </>
@@ -91,10 +93,16 @@ const styles = StyleSheet.create({
       animationIterationCount: '3',
     },
   },
-  // ... otros estilos ...
-  closeIcon: {
+  closeButton: {
     float: 'right',
+    border: 'none',
+    backgroundColor: 'transparent',
     cursor: 'pointer',
+    padding: '5px',
+  },
+  closeIcon: {
+    width: '15px',
+    height: '15px',
   },
   // ... otros estilos ...
 });
