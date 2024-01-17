@@ -17,6 +17,13 @@ const styles = StyleSheet.create({
   urgent: {
     color: 'red',
   },
+  // Nuevos estilos
+  notificationItem: {
+    width: '100%', // Toma todo el ancho de la pantalla
+    borderBottom: '1px solid black', // Borde negro en la parte inferior
+    fontSize: '20px', // Tamaño de fuente de 20px
+    padding: '10px 8px', // Padding de 10px en la parte superior e inferior, 8px en los lados
+  },
 });
 
 class NotificationItem extends PureComponent {
@@ -24,7 +31,7 @@ class NotificationItem extends PureComponent {
     const { type, html, value, markAsRead, id } = this.props;
 
     // Aplicar estilos basados en el tipo
-    const style = type === 'default' ? styles.default : styles.urgent;
+    const style = [type === 'default' ? styles.default : styles.urgent, styles.notificationItem];
 
     const listItemContent = html ? (
       <li
