@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { keyframes, css } from '@emotion/react';
+import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import closeIcon from '../assets/close-icon.png';
 import NotificationItemShape from './NotificationItemShape';
