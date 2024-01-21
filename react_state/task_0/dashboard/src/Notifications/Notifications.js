@@ -80,7 +80,7 @@ class Notifications extends Component {
     return (
       <>
         {!displayDrawer && (
-          <MenuItem>
+          <MenuItem onClick={handleDisplayDrawer}>  //aqui se añade el elemento OnClick
             <p>Your notifications</p>
           </MenuItem>
         )}
