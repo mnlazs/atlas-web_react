@@ -1,7 +1,7 @@
 import React from 'react';
 import App from './App';
-import { StyleSheetTestUtils } from 'aphrodite';
 import { shallow } from 'enzyme';
+import { StyleSheetTestUtils } from 'aphrodite';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
@@ -14,10 +14,27 @@ describe('Pruebas del componente App', () => {
   });
 
   afterAll(() => {
-    StyleSheetTestUtils.clearButfferAndResumeStyleInjection();
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection(); // Corregido 'clearButfferAndResumeStyleInjection' a 'clearBufferAndResumeStyleInjection'
   });
 
-  // todas las pruebas siguientes 
+  it('el estado displayDrawer debe ser false por defecto', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.state('displayDrawer')).toBe(false);
+  });
+
+  it('handleDisplayDrawer debe actualizar el estado displayDrawer a true', () => {
+    const wrapper = shallow(<App />);
+    wrapper.instance().handleDisplayDrawer();
+    expect(wrapper.state('displayDrawer')).toBe(true);
+  });
+
+  it('handleHideDrawer debe actualizar el estado displayDrawer a false', () => {
+    const wrapper = shallow(<App />);
+    wrapper.instance().handleDisplayDrawer();
+    wrapper.instance().handleHideDrawer();
+    expect(wrapper.state('displayDrawer')).toBe(false);
+  });
+
   it('se renderiza sin problemas', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.exists()).toBeTruthy();
@@ -26,10 +43,9 @@ describe('Pruebas del componente App', () => {
   it('no debe mostrar Notifications cuando displayDrawer es false', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find(Notifications).exists()).toBeFalsy();
-  });  
+  });
 
   it('debe mostrar Notifications cuando displayDrawer es true', () => {
-    // Simula el estado pasando props al componente
     const wrapper = shallow(<App displayDrawer={true} />);
     expect(wrapper.find(Notifications).exists()).toBeTruthy();
   });
@@ -74,23 +90,18 @@ describe('Pruebas del componente App', () => {
         const logOutMock = jest.fn();
         const originalAlert = window.alert;
         window.alert = jest.fn();
-  
-        // Crear una instancia del componente App
+
         const wrapper = shallow(<App logOut={logOutMock} />);
-  
-        // Obtener la instancia del componente y espiar el método handleKeyPress
         const instance = wrapper.instance();
         jest.spyOn(instance, 'handleKeyPress');
-  
-        // Simular la presión de las teclas ctrl+h
-        instance.handleKeyPress({ key: 'h', ctrlKey: true });
-  
-        // Verificar que logOut y alert fueron llamados
+
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: 'h', ctrlKey: true }));
+
         expect(logOutMock).toHaveBeenCalled();
         expect(window.alert).toHaveBeenCalledWith('Logging you out');
-  
+
         window.alert = originalAlert;
       });
     });
   });
-})
+});

@@ -5,14 +5,36 @@ import { StyleSheetTestUtils } from 'aphrodite';
 
 
 describe('<NotificationItem />', () => {
+  let wrapper;
+  const handleDisplayDrawerSpy = jest.fn();
+  const handleHideDrawerSpy = jest.fn();
+
   beforeEach(() => {
     // Suprime la inyección de estilos antes de cada prueba
     StyleSheetTestUtils.suppressStyleInjection();
+    wrapper = shallow(
+      <Notifications 
+        handleDisplayDrawer={handleDisplayDrawerSpy} 
+        handleHideDrawer={handleHideDrawerSpy}
+      />
+    );
   });
 
   afterEach(() => {
-    // Reanuda la inyección de estilos después de cada prueba
     StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+    jest.clearAllMocks();
+  });
+  
+  it('llama a handleDisplayDrawer cuando se hace clic en el ítem del menú', () => {
+    wrapper.find('MenuItem').simulate('click');
+    expect(handleDisplayDrawerSpy).toHaveBeenCalled();
+  });
+
+  it('llama a handleHideDrawer cuando se hace clic en el botón de cierre', () => {
+    // Forzando al componente a renderizarse con displayDrawer como true
+    wrapper.setProps({ displayDrawer: true });
+    wrapper.find('CloseButton').simulate('click');
+    expect(handleHideDrawerSpy).toHaveBeenCalled();
   });
 
   it('calls markAsRead with the right ID when clicked', () => {

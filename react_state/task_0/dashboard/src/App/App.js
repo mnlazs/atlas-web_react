@@ -21,13 +21,20 @@ class App extends Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
+  // Creando las funciones y arrojando True o False
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyPress);
   }
-
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyPress);
   }
+  handleDisplayDrawer() {
+    this.setState({ displayDrawer: true });
+  }
+  handleHideDrawer() {
+    this.setState({ displayDrawer: false });
+  }
+
 
   handleKeyPress(event) {
     if (event.ctrlKey && event.key === 'h') {
@@ -53,8 +60,14 @@ class App extends Component {
 
     return (
       <>
-        <div className="menuItem" onClick={this.toggleDrawer}>Toggle Notifications</div>
-        <Notifications displayDrawer={displayDrawer} listNotifications={listNotifications} />
+        <div className="menuItem" onClick={this.handleDisplayDrawer}>Toggle Notifications</div>
+        <Notifications
+        displayDrawer={displayDrawer}
+        handleDisplayDrawer={this.handleDisplayDrawer}
+        handleHideDrawer={this.handleHideDrawer}
+        listNotifications={listNotifications}
+        />
+
         <div className={css(styles.app)}>
           <Header />
           {isLoggedIn ? (
