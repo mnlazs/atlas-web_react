@@ -24,17 +24,36 @@ describe('<Notifications />', () => {
   });
 
   it('calls handleDisplayDrawer when menu item is clicked', () => {
-    // Suponiendo que tu componente tiene un elemento con el testID 'menuItem'
     wrapper.find('[testID="menuItem"]').simulate('click'); 
     expect(handleDisplayDrawerSpy).toHaveBeenCalled();
   });
 
   it('calls handleHideDrawer when close button is clicked', () => {
-    // Suponiendo que tu componente tiene un elemento con el testID 'closeButton'
     wrapper.setProps({ displayDrawer: true });
     wrapper.find('[testID="closeButton"]').simulate('click');
     expect(handleHideDrawerSpy).toHaveBeenCalled();
   });
 
-  // ... tus otras pruebas existentes
+  it('does not rerender when the list of notifications has not changed in length', () => {
+    const listNotifications = [
+      { id: 1, type: 'default', value: 'New course available' },
+      { id: 2, type: 'urgent', value: 'New resume available' }
+    ];
+    
+    const shouldUpdate = wrapper.instance().shouldComponentUpdate({ listNotifications });
+    expect(shouldUpdate).toBeFalsy();
+  });
+
+  it('does rerender when the list of notifications increases in length', () => {
+    const initialListNotifications = [
+      { id: 1, type: 'default', value: 'New course available' }
+    ];
+    const newListNotifications = [
+      ...initialListNotifications,
+      { id: 2, type: 'urgent', value: 'New resume available' }
+    ];
+    
+    const shouldUpdate = wrapper.instance().shouldComponentUpdate({ listNotifications: newListNotifications });
+    expect(shouldUpdate).toBeTruthy();
+  });
 });
