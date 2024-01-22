@@ -18,7 +18,7 @@ const fadeIn = keyframes`
 `;
 
 const NotificationsPanel = styled.div`
-  border: 2px solid rgb(9, 195, 37);
+  border: 2px solid rgb(9, 195, 37);12332e3 
   padding: 10px;
   font-family: Franklin Gothic Medium, Arial, sans-serif;
   font-style: italic;
@@ -86,7 +86,7 @@ class Notifications extends Component {
         )}
         {displayDrawer && (
           <NotificationsPanel>
-            <CloseButton onClick={this.handleButtonClick}>
+            <CloseButton onClick={this.handleHideDrawer}>
               <CloseIcon src={closeIcon} alt="Close" />
             </CloseButton>
             {listNotifications.length === 0 ? (
