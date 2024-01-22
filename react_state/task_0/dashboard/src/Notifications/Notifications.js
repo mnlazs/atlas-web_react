@@ -18,7 +18,7 @@ const fadeIn = keyframes`
 `;
 
 const NotificationsPanel = styled.div`
-  border: 2px solid rgb(9, 195, 37);12332e3 
+  border: 2px solid rgb(9, 195, 37);
   padding: 10px;
   font-family: Franklin Gothic Medium, Arial, sans-serif;
   font-style: italic;
@@ -59,7 +59,6 @@ class Notifications extends Component {
   constructor(props) {
     super(props);
     this.markAsRead = this.markAsRead.bind(this);
-    this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
   shouldComponentUpdate(nextProps) {
@@ -71,22 +70,18 @@ class Notifications extends Component {
     console.log(`Notification ${id} has been marked as read`);
   }
 
-  handleButtonClick() {
-    console.log('Close button has been clicked');
-  }
-
   render() {
     const { displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer } = this.props;
     return (
       <>
         {!displayDrawer && (
-          <MenuItem onClick={handleDisplayDrawer}>  //aqui se añade el elemento OnClick
+          <MenuItem onClick={handleDisplayDrawer}>
             <p>Your notifications</p>
           </MenuItem>
         )}
         {displayDrawer && (
           <NotificationsPanel>
-            <CloseButton onClick={this.handleHideDrawer}>
+            <CloseButton onClick={handleHideDrawer}>
               <CloseIcon src={closeIcon} alt="Close" />
             </CloseButton>
             {listNotifications.length === 0 ? (
