@@ -8,7 +8,7 @@ import CourseList from '../CourseList/CourseList';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../utils/utils';
-import AppContext from './AppContext'; 
+import AppContext from './AppContext'; // Asegúrate de que la ruta de importación sea correcta
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +25,6 @@ class App extends Component {
     this.logOut = this.logOut.bind(this);
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
-    this.toggleDrawer = this.toggleDrawer.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
@@ -77,9 +76,9 @@ class App extends Component {
     window.removeEventListener('keydown', this.handleKeyPress);
   }
 
+  
   render() {
     const { displayDrawer, user } = this.state;
-    const { isLoggedIn } = user;
 
     const listNotifications = [
       { id: 1, type: 'default', value: 'New course available' },
@@ -89,7 +88,7 @@ class App extends Component {
 
     return (
       <AppContext.Provider value={{ user, logOut: this.logOut }}>
-        <div className="menuItem" onClick={this.handleDisplayDrawer}>N O T I F I C A C I O N E S</div>
+        <div className="menuItem" onClick={this.handleDisplayDrawer}>Toggle Notifications</div>
         <Notifications
           displayDrawer={displayDrawer}
           handleDisplayDrawer={this.handleDisplayDrawer}
@@ -99,7 +98,7 @@ class App extends Component {
 
         <div className={css(styles.app)}>
           <Header />
-          {isLoggedIn ? (
+          {user.isLoggedIn ? (
             <BodySectionWithMarginBottom title="Course list">
               <CourseList />
             </BodySectionWithMarginBottom>

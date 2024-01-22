@@ -14,7 +14,11 @@ describe('Pruebas del componente App', () => {
   });
 
   afterAll(() => {
-    StyleSheetTestUtils.clearBufferAndResumeStyleInjection(); // Corregido 'clearButfferAndResumeStyleInjection' a 'clearBufferAndResumeStyleInjection'
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection(); 
+  });
+
+  beforeEach(() => {
+    wrapper = shallow(<App />);
   });
 
   it('el estado displayDrawer debe ser false por defecto', () => {
@@ -84,6 +88,50 @@ describe('Pruebas del componente App', () => {
     it('debe incluir el componente CourseList', () => {
       expect(wrapper.find(CourseList).exists()).toBeTruthy();
     });
+
+    it('logIn function updates the state correctly', () => {
+      const email = 'user@example.com';
+      const password = 'password';
+      wrapper.instance().logIn(email, password);
+      expect(wrapper.state('user')).toEqual({
+        email: email,
+        password: password,
+        isLoggedIn: true
+      });
+    });
+
+  it('logOut function updates the state correctly', () => {
+    wrapper.instance().logOut();
+    expect(wrapper.state('user')).toEqual({
+      email: '',
+      password: '',
+      isLoggedIn: false
+    });
+  });
+
+// Prueba para verificar que logOut es llamado correctamente
+it('should call logOut and update state when ctrl+h is pressed', () => {
+  const originalAlert = window.alert;
+  window.alert = jest.fn();
+  
+  // Simula que el usuario está logueado
+  wrapper.setState({
+    user: {
+      email: 'user@example.com',
+      password: 'password',
+      isLoggedIn: true
+    }
+  });
+
+  window.dispatchEvent(new KeyboardEvent('keydown', { key: 'h', ctrlKey: true }));
+
+  expect(wrapper.state('user').isLoggedIn).toBe(false);
+  expect(window.alert).toHaveBeenCalledWith('Logging you out');
+
+  window.alert = originalAlert;
+});
+
+
 
     describe('Pruebas de manejo de teclas', () => {
       it('debe llamar a logOut y mostrar una alerta cuando se presionan las teclas ctrl+h', () => {
