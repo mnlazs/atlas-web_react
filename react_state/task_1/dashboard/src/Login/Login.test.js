@@ -3,7 +3,8 @@ import { shallow } from 'enzyme';
 import Login from './Login';
 import { StyleSheetTestUtils } from 'aphrodite';
 
-describe('Login Component Test', () => {
+
+describe ('Login Component Test', () => {
   let wrapper;
 
   beforeEach(() => {
@@ -14,9 +15,16 @@ describe('Login Component Test', () => {
   afterEach(() => {
     StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
   });
+  
+  it ('should render without crashing', () => {
+    expect(wrapper).toBeTruthy();
+  });
 
-  // ... Tus pruebas existentes
-
+  it('should render 2 input tags and 2 label tags', () => {
+    expect(wrapper.find('input').length).toBe(2);
+    expect(wrapper.find('label').length).toBe(2);
+  });
+  
   it('submit button should be disabled by default', () => {
     const submitButton = wrapper.find('input[type="submit"]');
     expect(submitButton.props().disabled).toBeTruthy();
