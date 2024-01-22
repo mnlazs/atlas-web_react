@@ -1,22 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-const Login = () => {
-  return (
-    <div className={css(styles.loginContainer)}>
-      <p>Login to access the full dashboard</p>
-      <div className={css(styles.inputGroup)}>
-        <label htmlFor='email' className={css(styles.label)}>Email:</label>
-        <input type='email' id='email' name='email' className={css(styles.input)}/>
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoggedIn: false
+    };
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+  }
+
+  handleLoginSubmit(event) {
+    event.preventDefault();
+    this.setState({ isLoggedIn: true });
+  }
+
+  render() {
+    return (
+      <div className={css(styles.loginContainer)}>
+        <p>Login to access the full dashboard</p>
+        <form onSubmit={this.handleLoginSubmit}>
+          <div className={css(styles.inputGroup)}>
+            <label htmlFor='email' className={css(styles.label)}>Email:</label>
+            <input type='email' id='email' name='email' className={css(styles.input)}/>
+          </div>
+          <div className={css(styles.inputGroup)}>
+            <label htmlFor="password" className={css(styles.label)}>Password:</label>
+            <input type="password" id="password" name="password" className={css(styles.input)}/>
+          </div>
+          <input type="submit" className={css(styles.loginButton)} value="OK"/>
+        </form>
       </div>
-      <div className={css(styles.inputGroup)}>
-        <label htmlFor="password" className={css(styles.label)}>Password:</label>
-        <input type="password" id="password" name="password" className={css(styles.input)}/>
-      </div>
-      <button className={css(styles.loginButton)}>OK</button>
-    </div>
-  );
-};
+    );
+  }
+}
+
 
 const styles = StyleSheet.create({
   loginContainer: {
