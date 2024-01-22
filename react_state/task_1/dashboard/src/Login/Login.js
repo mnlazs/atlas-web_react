@@ -8,6 +8,7 @@ class Login extends Component {
       isLoggedIn: false,
       email: '',
       password: '',
+      enableSubmit: false
     };
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
@@ -20,11 +21,16 @@ class Login extends Component {
   }
 
   handleChangeEmail(event) {
-    this.setState({ email: event.target.value });
+    this.setState({ email: event.target.value }, this.updateEnableSubmit);
   }
 
   handleChangePassword(event) {
-    this.setState({ password: event.target.value });
+    this.setState({ password: event.target.value }, this.updateEnableSubmit);
+  }
+
+  updateEnableSubmit() {
+    const { email, password } = this.state;
+    this.setState({ enableSubmit: email !== '' && password !== '' });
   }
 
   render() {
@@ -34,19 +40,37 @@ class Login extends Component {
         <form onSubmit={this.handleLoginSubmit}>
           <div className={css(styles.inputGroup)}>
             <label htmlFor='email' className={css(styles.label)}>Email:</label>
-            <input type='email' id='email' name='email' className={css(styles.input)}/>
+            <input 
+              type='email' 
+              id='email' 
+              name='email' 
+              value={this.state.email}
+              onChange={this.handleChangeEmail}
+              className={css(styles.input)}
+            />
           </div>
           <div className={css(styles.inputGroup)}>
             <label htmlFor="password" className={css(styles.label)}>Password:</label>
-            <input type="password" id="password" name="password" className={css(styles.input)}/>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              value={this.state.password}
+              onChange={this.handleChangePassword}
+              className={css(styles.input)}
+            />
           </div>
-          <input type="submit" className={css(styles.loginButton)} value="OK"/>
+          <input 
+            type="submit" 
+            className={css(styles.loginButton)} 
+            value="OK" 
+            disabled={!this.state.enableSubmit}
+          />
         </form>
       </div>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   loginContainer: {
