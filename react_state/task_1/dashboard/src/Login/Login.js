@@ -5,14 +5,26 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
+      email: '',
+      password: '',
     };
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+    this.handleChangePassword = this.handleChangePassword.bind(this);
   }
 
   handleLoginSubmit(event) {
     event.preventDefault();
     this.setState({ isLoggedIn: true });
+  }
+
+  handleChangeEmail(event) {
+    this.setState({ email: event.target.value });
+  }
+
+  handleChangePassword(event) {
+    this.setState({ password: event.target.value });
   }
 
   render() {
