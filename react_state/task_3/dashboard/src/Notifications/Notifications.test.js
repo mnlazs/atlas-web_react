@@ -7,6 +7,7 @@ describe('<Notifications />', () => {
   let wrapper;
   const handleDisplayDrawerSpy = jest.fn();
   const handleHideDrawerSpy = jest.fn();
+  const markNotificationAsReadSpy = jest.fn();
 
   beforeEach(() => {
     StyleSheetTestUtils.suppressStyleInjection();
@@ -14,6 +15,7 @@ describe('<Notifications />', () => {
       <Notifications 
         handleDisplayDrawer={handleDisplayDrawerSpy} 
         handleHideDrawer={handleHideDrawerSpy}
+        markNotificationAsRead={markNotificationAsReadSpy}
       />
     );
   });
