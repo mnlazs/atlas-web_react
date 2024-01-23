@@ -74,6 +74,24 @@ describe('Pruebas del componente App', () => {
     expect(wrapper.find(CourseList).exists()).toBeFalsy();
   });
 
+  it('markNotificationAsRead function removes the notification with the given id', () => {
+    // Establece un estado inicial con notificaciones mock
+    const initialNotifications = [
+      { id: 1, type: 'default', value: 'New course available' },
+      { id: 2, type: 'urgent', value: 'New resume available' },
+      { id: 3, type: 'urgent', html: { __html: '<strong>Urgent requirement</strong> - complete by EOD' } }
+    ];
+    wrapper.setState({ listNotifications: initialNotifications });
+    
+    // Llama a markNotificationAsRead para el ID 2
+    wrapper.instance().markNotificationAsRead(2);
+
+     // Verifica que la notificación con ID 2 haya sido removida
+    const updatedNotifications = wrapper.state('listNotifications');
+    expect(updatedNotifications).toHaveLength(2);
+    expect(updatedNotifications.find(notification => notification.id === 2)).toBeUndefined();
+  });
+
   describe('cuando isLoggedIn es true', () => {
     let wrapper;
 

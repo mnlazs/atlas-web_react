@@ -8,7 +8,7 @@ import CourseList from '../CourseList/CourseList';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../utils/utils';
-import AppContext from './AppContext'; // Asegúrate de que la ruta de importación sea correcta
+import AppContext from './AppContext';
 
 class App extends Component {
   constructor(props) {
@@ -19,13 +19,19 @@ class App extends Component {
         email: '',
         password: '',
         isLoggedIn: false
-      }
+      },
+      listNotifications: [
+        { id: 1, type: 'default', value: 'New course available' },
+        { id: 2, type: 'urgent', value: 'New resume available' },
+        { id: 3, type: 'urgent', html: { __html: getLatestNotification() } }
+      ]
     };
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
   }
 
   logIn(email, password) {
@@ -64,8 +70,10 @@ class App extends Component {
     }
   }
 
-  toggleDrawer() {
-    this.setState(prevState => ({ displayDrawer: !prevState.displayDrawer }));
+  markNotificationAsRead(id) {
+    this.setState({
+      listNotifications: this.state.listNotifications.filter(notification => notification.id !== id)
+    });
   }
 
   componentDidMount() {
@@ -76,15 +84,8 @@ class App extends Component {
     window.removeEventListener('keydown', this.handleKeyPress);
   }
 
-  
   render() {
-    const { displayDrawer, user } = this.state;
-
-    const listNotifications = [
-      { id: 1, type: 'default', value: 'New course available' },
-      { id: 2, type: 'urgent', value: 'New resume available' },
-      { id: 3, type: 'urgent', html: { __html: getLatestNotification() } }
-    ];
+    const { displayDrawer, user, listNotifications } = this.state;
 
     return (
       <AppContext.Provider value={{ user, logOut: this.logOut }}>
@@ -94,6 +95,7 @@ class App extends Component {
           handleDisplayDrawer={this.handleDisplayDrawer}
           handleHideDrawer={this.handleHideDrawer}
           listNotifications={listNotifications}
+          markNotificationAsRead={this.markNotificationAsRead}
         />
 
         <div className={css(styles.app)}>
@@ -117,44 +119,44 @@ class App extends Component {
   }
 }
 
-// estilos definidos con Aphrodite
-
 const styles = StyleSheet.create({
-app: {
-  textAlign: 'center',
-  backgroundColor: '#f3f3f3',
-  minHeight: '100vh',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: 'calc(10px + 2vmin)',
-  color: 'black',
-},
-menuItem: {
-  backgroundColor: '#282c34',
-    minHeight: '40px',
+  app: {
+    textAlign: 'center',
+    backgroundColor: '#f3f3f3',
+    minHeight: '100vh',
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'white',
-    fontSize: '20px',
-    cursor: 'pointer',
-},
-body: {
-  fontSize: '16px',
-  fontFamily: "'Franklin Gothic Medium', 'Arial', sans-serif",
-  width: '100%', // Ocupa todo el ancho disponible
-  textAlign: 'center',
-  paddingTop: '20px', // Espacio en la parte superior
-  margin: '200px 0', // Añade un margen arriba y abajo
-},
+    fontSize: 'calc(10px + 2vmin)',
+    color: 'black',
+  },
 
-footer: {
-  borderTop: '2px solid #000',
-  fontFamily: "'Franklin Gothic Medium', 'Arial', sans-serif",
-  fontStyle: 'italic',
-},
-});
-
-export default App;
+  menuItem: {
+    backgroundColor: '#282c34',
+      minHeight: '40px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      fontSize: '20px',
+      cursor: 'pointer',
+  },
+  body: {
+    fontSize: '16px',
+    fontFamily: "'Franklin Gothic Medium', 'Arial', sans-serif",
+    width: '100%', // Ocupa todo el ancho disponible
+    textAlign: 'center',
+    paddingTop: '20px', // Espacio en la parte superior
+    margin: '200px 0', // Añade un margen arriba y abajo
+  },
+  
+  footer: {
+    borderTop: '2px solid #000',
+    fontFamily: "'Franklin Gothic Medium', 'Arial', sans-serif",
+    fontStyle: 'italic',
+  },
+  });
+  
+  export default App;
+  

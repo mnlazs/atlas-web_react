@@ -55,23 +55,9 @@ const CloseIcon = styled.img`
   height: 15px;
 `;
 
-class Notifications extends Component {
-  constructor(props) {
-    super(props);
-    this.markAsRead = this.markAsRead.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return nextProps.listNotifications.length > this.props.listNotifications.length
-        || nextProps.displayDrawer !== this.props.displayDrawer;
-  }
-
-  markAsRead(id) {
-    console.log(`Notification ${id} has been marked as read`);
-  }
-
+class Notifications extends PureComponent {
   render() {
-    const { displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer } = this.props;
+    const { displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer, markNotificationAsRead } = this.props;
     return (
       <>
         {!displayDrawer && (
@@ -94,7 +80,7 @@ class Notifications extends Component {
                     type={type}
                     value={value}
                     html={html}
-                    markAsRead={this.markAsRead}
+                    markAsRead={markNotificationAsRead} // Utiliza la función pasada como prop
                     id={id}
                   />
                 ))}
@@ -106,6 +92,7 @@ class Notifications extends Component {
     );
   }
 }
+
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
