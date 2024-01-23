@@ -1,7 +1,9 @@
-# React Project Learning Objectives 🚀
+![Nombre del GIF](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGdjNWc1dXY5ZDVpa3AzYTg0emRxMjYyZ21saTJ3aDRvZ3Yxd2xqeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FtXWChRfsZX1z3rOGn/giphy.gif)
 
-## Introduction
-Este documento detalla los objetivos de aprendizaje clave de un proyecto React. Está diseñado para ayudar a entender conceptos fundamentales de React y su aplicación práctica.
+# React state 🚀
+
+##  What the State of a Component or a Container Is?  🌟
+En React, el estado de un componente o contenedor se refiere a un objeto que almacena valores de datos que pueden cambiar con el tiempo. Cada componente puede tener su propio estado local, que controla el comportamiento del componente y cómo se renderiza. El estado es esencial para los componentes dinámicos en aplicaciones React, ya que permite que tu aplicación responda a diferentes entradas y acciones del usuario.
 
 ## Objetivos de Aprendizaje
 
