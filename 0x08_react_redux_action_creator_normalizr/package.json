@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@bcoe/v8-coverage": "^0.2.3"
+  }
+}
