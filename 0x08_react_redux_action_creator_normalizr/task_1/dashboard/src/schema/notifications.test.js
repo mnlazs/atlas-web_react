@@ -1,3 +1,4 @@
+import { schema } from 'normalizr';
 import { normalize, schema } from 'normalizr';
 import * as data from './notifications.json';
 import { user, message, notification } from './notifications.js';
@@ -71,5 +72,16 @@ describe('getAllNotificationsByUser', () => {
       // Verifica si los datos del usuario normalizado coinciden con los esperados
       expect(normalizedData.entities.users["5debd764a7c57c7839d722e9"]).toEqual(expectedUserData);
     });
+
+     // Test [para los mensajes]
+      const expectedMessageData = {
+      guid: "efb6c485-00f7-4fdf-97cc-5e12d14d6c41",
+      isRead: false,
+      type: "default",
+      value: "Cursus risus at ultrices mi."
+    };
+
+    // Verifica si los datos del mensaje normalizado coinciden con los esperados
+    expect(normalizedData.entities.messages["efb6c485-00f7-4fdf-97cc-5e12d14d6c41"]).toEqual(expectedMessageData);
   });
 });
