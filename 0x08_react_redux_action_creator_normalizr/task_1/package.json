@@ -56,7 +56,7 @@
     "setupFilesAfterEnv": [
       "<rootDir>/config/setupTests.js"
     ],
-      "moduleNameMapper": {
+    "moduleNameMapper": {
       "\\.(css)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(jpg|jpeg|png|gif|webp|svg)$": "<rootDir>/__mocks__/fileMock.js"
     }

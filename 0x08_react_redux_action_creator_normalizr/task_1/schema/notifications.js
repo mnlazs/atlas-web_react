@@ -1,3 +1,4 @@
+import React, { useState, PureComponent } from 'react';
 import * as notificationData from './path/to/notifications.json';
 import { schema } from 'normalizr';
 

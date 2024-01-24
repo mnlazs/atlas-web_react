@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 
@@ -44,7 +44,16 @@ const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
   const checkedStyle = !isHeader && isChecked ? styles.rowChecked : null;
 
   return (
-    <tr className={css(evenRowStyle, hoverStyle)}>
+    <tr className={css(evenRowStyle, hoverStyle, checkedStyle)}>
+      {!isHeader && (
+        <td>
+          <input
+            type="checkbox"
+            onChange={handleCheckboxChange}
+            checked={isChecked}
+          />
+        </td>
+      )}
       {isHeader ? (
         textSecondCell ? (
           <>
