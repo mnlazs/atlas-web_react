@@ -1,3 +1,7 @@
+![Imagen del Proyecto]()
+<img src="62c5368c3a321dd181302f80.png" alt="Imagen del Proyecto" width="200" height="200"/>
+
+
 # Redux 📊
 
 Este proyecto explora conceptos clave de React y Redux, incluyendo Normalizr, esquemas, normalización de JSON anidado, acciones de Redux y creadores de acciones.
