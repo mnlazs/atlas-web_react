@@ -1,5 +1,5 @@
 
-<img src="62c5368c3a321dd181302f80.png" alt="Imagen del Proyecto" width="400"/>
+<img src="JSMethod.gif" alt="Imagen del Proyecto" width="400"/>
 
 
 # Redux 📊
