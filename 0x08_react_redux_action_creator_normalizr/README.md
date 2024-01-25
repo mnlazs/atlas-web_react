@@ -1,5 +1,5 @@
-![Imagen del Proyecto]()
-<img src="62c5368c3a321dd181302f80.png" alt="Imagen del Proyecto" width="200" height="200"/>
+
+<img src="62c5368c3a321dd181302f80.png" alt="Imagen del Proyecto" width="400"/>
 
 
 # Redux 📊
