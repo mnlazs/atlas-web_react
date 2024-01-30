@@ -1,0 +1,25 @@
+/* CourseList.css */
+#CourseList {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#CourseList th, #CourseList td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#CourseList th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+#CourseList tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#CourseList tbody tr:hover {
+  background-color: #f1f1f1;
+}
