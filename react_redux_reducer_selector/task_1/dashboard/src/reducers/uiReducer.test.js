@@ -1,13 +1,12 @@
 import uiReducer from './uiReducer';
 import { Map } from 'inmutable';
 
-const 
 // Si el estado inicial no está exportado desde uiReducer, puedes definirlo aquí para las pruebas
-const initialState = {
+const initialState = Map ({
   isNotificationDrawerVisible: false,
   isUserLoggedIn: false,
-  user: {},
-};
+  user: Map({}),
+});
 
 describe('uiReducer', () => {
   // Test 1: Verificar el estado inicial
