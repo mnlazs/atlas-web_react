@@ -1,5 +1,7 @@
 import uiReducer from './uiReducer';
+import { Map } from 'inmutable';
 
+const 
 // Si el estado inicial no está exportado desde uiReducer, puedes definirlo aquí para las pruebas
 const initialState = {
   isNotificationDrawerVisible: false,
