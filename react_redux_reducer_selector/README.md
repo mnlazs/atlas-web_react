@@ -1,4 +1,6 @@
-# Guía de Redux, Selectores, Pruebas, Immutable.js y Normalizr 🚀
+<img src="image.png" alt="Imagen del Proyecto" width="400"/>
+
+# Selectores, Pruebas, Immutable.js y Normalizr 🚀
 
 Este proyecto proporciona ejemplos y prácticas recomendadas para trabajar con Redux, selectores, escribir pruebas, y utilizar Immutable.js y Normalizr en aplicaciones de React.
 
