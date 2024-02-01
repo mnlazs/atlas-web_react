@@ -2,7 +2,7 @@
 
 Este proyecto proporciona ejemplos y prácticas recomendadas para trabajar con Redux, selectores, escribir pruebas, y utilizar Immutable.js y Normalizr en aplicaciones de React.
 
-## 📚 Recursos
+## 📚 Documentacion
 
 ### Reducers
 - 📖 [Reducers](https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers)
@@ -38,7 +38,7 @@ Este proyecto incluye ejemplos de código para:
 - **Immutable.js**: Utilizar Map de Immutable.js para manejar el estado.
 - **Normalizr**: Ejemplo de cómo normalizar los datos de la API.
 
-## 🚀 Ejemplo de Código
+## 🚀 Ejemplo
 
 ```javascript
 import { normalize, schema } from 'normalizr';

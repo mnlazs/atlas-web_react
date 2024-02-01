@@ -3,7 +3,7 @@ import {
   FETCH_COURSE_SUCCESS,
   SELECT_COURSE,
   UNSELECT_COURSE,
-} from './courseActionTypes';
+} from './courseActionTypes.js';
 
 // Estado inicial esperado
 const initialState = [];
