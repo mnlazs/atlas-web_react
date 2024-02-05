@@ -13,6 +13,7 @@ import AppContext from './AppContext';
 
 const mapStateToProps = (state) => ({
   isLoggedIn: state.uiReducer.isLoggedIn, // Asume que uiReducer es tu reducer y tiene una propiedad isLoggedIn
+  displayDrawer: state.uiReducer.listNotificationDrawerVisible, // Asume que uiReducer maneja este estado
 });
 
 class App extends Component {
@@ -60,11 +61,11 @@ class App extends Component {
   }
 
   handleDisplayDrawer() {
-    this.setState({ displayDrawer: true });
+    this.props.dispatch(showDrawer());
   }
 
   handleHideDrawer() {
-    this.setState({ displayDrawer: false });
+    this.props.dispatch(hideDrawer());
   }
 
   handleKeyPress(event) {
@@ -91,8 +92,8 @@ class App extends Component {
 
 
   render() {
-    const { displayDrawer, user, listNotifications } = this.state;
-    const { isLoggedIn } = this.props;
+    const { user, listNotifications } = this.state;
+    const { isLoggedIn, displayDrawer } = this.props;
 
     return (
       <AppContext.Provider value={{ user, logOut: this.logOut }}>
