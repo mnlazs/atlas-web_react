@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { displayNotificationDrawer, hideNotificationDrawer } from '../actions/uiActions';
 import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite';
 import Header from '../Header/Header';
@@ -15,6 +16,11 @@ const mapStateToProps = (state) => ({
   isLoggedIn: state.uiReducer.isLoggedIn, // Asume que uiReducer es tu reducer y tiene una propiedad isLoggedIn
   displayDrawer: state.uiReducer.listNotificationDrawerVisible, // Asume que uiReducer maneja este estado
 });
+
+const mapDispatchToProps = {
+  displayNotificationDrawer,
+  hideNotificationDrawer,
+};
 
 class App extends Component {
   constructor(props) {
@@ -93,7 +99,7 @@ class App extends Component {
 
   render() {
     const { user, listNotifications } = this.state;
-    const { isLoggedIn, displayDrawer } = this.props;
+    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer   } = this.props;
 
     return (
       <AppContext.Provider value={{ user, logOut: this.logOut }}>
@@ -166,4 +172,4 @@ const styles = StyleSheet.create({
   },
   });
   
-  export default connect(mapStateToProps)(App);
+  export default connect(mapStateToProps, mapDispatchToProps)(App);
