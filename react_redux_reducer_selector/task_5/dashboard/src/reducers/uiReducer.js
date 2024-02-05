@@ -1,4 +1,4 @@
-import { Map } from 'inmutable';
+import { Map } from 'immutable';
 
 // Estado inicial
 const initialState = Map({

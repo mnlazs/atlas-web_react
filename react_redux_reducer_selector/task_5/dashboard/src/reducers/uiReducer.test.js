@@ -1,5 +1,5 @@
 import uiReducer from './uiReducer';
-import { Map } from 'inmutable';
+import { Map } from 'immutable';
 
 // Si el estado inicial no está exportado desde uiReducer, puedes definirlo aquí para las pruebas
 const initialState = Map ({
