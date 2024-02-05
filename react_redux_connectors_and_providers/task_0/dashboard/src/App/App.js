@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -9,6 +10,10 @@ import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBot
 import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../utils/utils';
 import AppContext from './AppContext';
+
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.uiReducer.isLoggedIn, // Asume que uiReducer es tu reducer y tiene una propiedad isLoggedIn
+});
 
 class App extends Component {
   constructor(props) {
@@ -82,10 +87,12 @@ class App extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyPress);
-  }
+  } 
+
 
   render() {
     const { displayDrawer, user, listNotifications } = this.state;
+    const { isLoggedIn } = this.props;
 
     return (
       <AppContext.Provider value={{ user, logOut: this.logOut }}>
@@ -100,7 +107,7 @@ class App extends Component {
 
         <div className={css(styles.app)}>
           <Header />
-          {user.isLoggedIn ? (
+          {isLoggedIn ? (
             <BodySectionWithMarginBottom title="Course list">
               <CourseList />
             </BodySectionWithMarginBottom>
@@ -158,5 +165,4 @@ const styles = StyleSheet.create({
   },
   });
   
-  export default App;
-  
+  export default connect(mapStateToProps)(App);
