@@ -11,6 +11,7 @@ import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBot
 import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../utils/utils';
 import AppContext from './AppContext';
+import propTypes from 'defaultProps';
 
 const mapStateToProps = (state) => ({
   isLoggedIn: state.uiReducer.isLoggedIn, // Asume que uiReducer es tu reducer y tiene una propiedad isLoggedIn
@@ -26,7 +27,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayDrawer: false,
       user: {
         email: '',
         password: '',
@@ -40,8 +40,6 @@ class App extends Component {
     };
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
-    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
-    this.handleHideDrawer = this.handleHideDrawer.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
   }
@@ -99,15 +97,15 @@ class App extends Component {
 
   render() {
     const { user, listNotifications } = this.state;
-    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer   } = this.props;
+    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer } = this.props;
 
     return (
       <AppContext.Provider value={{ user, logOut: this.logOut }}>
-        <div className="menuItem" onClick={this.handleDisplayDrawer}>Toggle Notifications</div>
+        <div className="menuItem" onClick={displayNotificationDrawer}>Toggle Notifications</div>
         <Notifications
           displayDrawer={displayDrawer}
-          handleDisplayDrawer={this.handleDisplayDrawer}
-          handleHideDrawer={this.handleHideDrawer}
+          handleDisplayDrawer={handleDisplayDrawer}
+          handleHideDrawer={hideNotificationDrawer}
           listNotifications={listNotifications}
           markNotificationAsRead={this.markNotificationAsRead}
         />
@@ -132,6 +130,20 @@ class App extends Component {
     );
   }
 }
+
+// definicion de  propTypes y defaultProps
+App.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  displayDrawer: PropTypes.bool,
+  displayNotificationDrawer: PropTypes.func.isRequired,
+  hideNotificationDrawer: PropTypes.func.isRequired,
+};
+
+App.defaultProps = {
+  isLoggedIn: false,
+  displayDrawer: false,
+};
+
 
 const styles = StyleSheet.create({
   app: {
