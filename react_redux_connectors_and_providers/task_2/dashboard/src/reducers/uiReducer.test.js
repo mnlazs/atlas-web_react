@@ -9,6 +9,24 @@ const initialState = Map ({
 });
 
 describe('uiReducer', () => {
+  it('debería manejar LOGIN_SUCCESS correctamente', () => {
+    const initialState = fromJS({ isUserLoggedIn: false, user: {} });
+    const action = { type: 'LOGIN_SUCCESS', payload: { user: { email: 'test@example.com' } } };
+    const nextState = uiReducer(initialState, action);
+    expect(nextState.get('isUserLoggedIn')).toBe(true);
+    expect(nextState.get('user')).toEqual(fromJS({ email: 'test@example.com' }));
+  });
+
+  it('debería manejar LOGOUT correctamente', () => {
+    const initialState = fromJS({ isUserLoggedIn: true, user: { email: 'test@example.com' } });
+    const action = { type: 'LOGOUT' };
+    const nextState = uiReducer(initialState, action);
+    expect(nextState.get('isUserLoggedIn')).toBe(false);
+    expect(nextState.get('user')).toEqual(fromJS({}));
+  });
+});
+
+describe('uiReducer', () => {
   // Test 1: Verificar el estado inicial
   it('debería retornar el estado inicial si no se pasa ninguna acción', () => {
     expect(uiReducer(undefined, {})).toEqual(initialState);

@@ -1,12 +1,18 @@
-import { createStore, combineReducers } from 'redux';
-import courseReducer from './reducers/courseReducer';
-import notificationReducer from './reducers/notificationReducer';
-
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension'; 
+import uiReducer from './reducers/uiReducer';
 
 const rootReducer = combineReducers({
-  course: courseReducer,
-  Notifications: notificationReducer,
+  uiReducer, // y otros reducers que tengas
 });
 
-const store = createStore(rootReducer);
+// Crea el store aplicando el middleware redux-thunk y habilitando Redux DevTools
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(thunk) // Aplica el middleware redux-thunk
+  )
+);
+
 export default store;

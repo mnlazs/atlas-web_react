@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite';
-import AppContext from '../App/AppContext'; // Asegúrate de que la ruta de importación sea correcta
+import { logout } from '../actions/authActions';
 
 class Header extends Component {
-  static contextType = AppContext;
-
   render() {
-    const { user, logOut } = this.context;
+    const { user, logout } = this.props; // Usa destructuring para acceder a las props
 
     return (
       <div>
@@ -16,7 +15,7 @@ class Header extends Component {
         </div>
         {user.isLoggedIn && (
           <div id="logoutSection" className={css(styles.logoutSection)}>
-            Welcome {user.email} (<span onClick={logOut} style={{cursor: 'pointer'}}>logout</span>)
+            Welcome {user.email} (<span onClick={logout} style={{cursor: 'pointer'}}>logout</span>)
           </div>
         )}
       </div>
@@ -24,6 +23,17 @@ class Header extends Component {
   }
 }
 
+// función mapStateToProps
+const mapStateToProps = (state) => ({
+  user: state.uiReducer.user, // Ajusta este camino según la estructura de tu estado de Redux
+});
+
+// Define mapDispatchToProps para conectar el creador de acción logout
+const mapDispatchToProps = {
+  logout, // Esto automáticamente enlazará el creador de acción logout a dispatch
+};
+
+// Estilos usando Aphrodite
 const styles = StyleSheet.create({
   header: {
     backgroundColor: '#333',
@@ -48,4 +58,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Header;
+// Conecta el componente Header a Redux
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
