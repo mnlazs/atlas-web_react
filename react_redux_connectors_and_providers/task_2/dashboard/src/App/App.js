@@ -12,6 +12,8 @@ import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../utils/utils';
 import AppContext from './AppContext';
 import propTypes from 'defaultProps';
+import PropTypes from 'prop-types';
+import { loginRequest } from '../actions/uiActionCreators';
 
 const mapStateToProps = (state) => ({
   isLoggedIn: state.uiReducer.isLoggedIn, // Asume que uiReducer es tu reducer y tiene una propiedad isLoggedIn
@@ -21,6 +23,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   displayNotificationDrawer,
   hideNotificationDrawer,
+  login: loginRequest,
 };
 
 class App extends Component {
@@ -38,30 +41,8 @@ class App extends Component {
         { id: 3, type: 'urgent', html: { __html: getLatestNotification() } }
       ]
     };
-    this.logIn = this.logIn.bind(this);
-    this.logOut = this.logOut.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
-  }
-
-  logIn(email, password) {
-    this.setState({
-      user: {
-        email,
-        password,
-        isLoggedIn: true
-      }
-    });
-  }
-
-  logOut() {
-    this.setState({
-      user: {
-        email: '',
-        password: '',
-        isLoggedIn: false
-      }
-    });
   }
 
   handleDisplayDrawer() {
@@ -97,7 +78,7 @@ class App extends Component {
 
   render() {
     const { user, listNotifications } = this.state;
-    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer } = this.props;
+    const { displayDrawer, displayNotificationDrawer, hideNotificationDrawer } = this.props;
 
     return (
       <AppContext.Provider value={{ user, logOut: this.logOut }}>
@@ -137,6 +118,7 @@ App.propTypes = {
   displayDrawer: PropTypes.bool,
   displayNotificationDrawer: PropTypes.func.isRequired,
   hideNotificationDrawer: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired, // Asegúrate de incluir la prop login aquí
 };
 
 App.defaultProps = {
