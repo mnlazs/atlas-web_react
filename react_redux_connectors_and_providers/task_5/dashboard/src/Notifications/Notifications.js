@@ -56,6 +56,10 @@ const CloseIcon = styled.img`
 `;
 
 class Notifications extends PureComponent {
+  omponentDidMount() {
+    // **TASK 19** Llama a fetchNotifications cuando el componente se monte
+    this.props.fetchNotifications();
+  }
   render() {
     const { displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer, markNotificationAsRead } = this.props;
     return (
@@ -98,7 +102,8 @@ Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
   handleDisplayDrawer: PropTypes.func,
-  handleHideDrawer: PropTypes.func
+  handleHideDrawer: PropTypes.func,
+  fetchNotifications: PropTypes.func.isRequired
 };
 
 Notifications.defaultProps = {
@@ -108,4 +113,12 @@ Notifications.defaultProps = {
   handleHideDrawer: () => {}
 };
 
-export default Notifications;
+const mapStateToProps = (state) => ({
+  listNotifications: state.notifications.get('messages').toJS(), 
+}); 
+
+const mapDispatchToProps = {
+  fetchNotifications,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
