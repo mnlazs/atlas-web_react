@@ -1,0 +1,3 @@
+
+export const FETCH_COURSE_SUCCESS = 'FETCH_COURSE_SUCCESS';
+
