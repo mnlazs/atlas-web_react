@@ -2,6 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Notifications from './Notifications';
 import { StyleSheetTestUtils } from 'aphrodite';
+import { fetchNotifications } from '../actions/notificationActionCreators';
+
+jest.mock('../actions/notificationActionCreators', () => ({
+  fetchNotifications: jest.fn(),
+}));
 
 describe('<Notifications />', () => {
   let wrapper;

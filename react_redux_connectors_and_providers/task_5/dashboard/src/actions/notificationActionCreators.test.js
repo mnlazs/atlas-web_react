@@ -1,27 +1,15 @@
-// src/actions/notificationActionCreators.test.js
-
-import { markAsAread, setNotificationFilter } from './notificationActionCreators';
-import { MARK_AS_READ, SET_TYPE_FILTER, NotificationTypeFilters } from './notificationActionTypes';
+import { setLoadingState, setNotifications, fetchNotifications } from './notificationActionCreators';
+import { SET_LOADING_STATE, FETCH_NOTIFICATIONS_SUCCESS } from './notificationActionTypes';
 
 describe('notificationActionCreators', () => {
-  it('markAsAread returns the correct action object', () => {
-    const index = 1;
-    const expectedAction = {
-      type: MARK_AS_READ,
-      index,
-    };
-    expect(markAsAread(index)).toEqual(expectedAction);
+  it('setLoadingState crea la acción correcta', () => {
+    const expectedAction = { type: SET_LOADING_STATE, isLoading: true };
+    expect(setLoadingState(true)).toEqual(expectedAction);
   });
 
-  it('setNotificationFilter returns the correct action object for default filter', () => {
-    const filter = NotificationTypeFilters.DEFAULT;
-    const expectedAction = {
-      type: SET_TYPE_FILTER,
-      filter,
-    };
-    expect(setNotificationFilter(filter)).toEqual(expectedAction);
+  it('setNotifications crea la acción correcta', () => {
+    const testData = [{ id: 1, value: 'Test Notification' }];
+    const expectedAction = { type: FETCH_NOTIFICATIONS_SUCCESS, data: testData };
+    expect(setNotifications(testData)).toEqual(expectedAction);
   });
-
-  // Puedes agregar otro test para el filtro URGENT si es necesario
 });
-
