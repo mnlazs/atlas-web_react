@@ -29,21 +29,8 @@ const mapDispatchToProps = {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: {
-        email: '',
-        password: '',
-        isLoggedIn: false
-      },
-      listNotifications: [
-        { id: 1, type: 'default', value: 'New course available' },
-        { id: 2, type: 'urgent', value: 'New resume available' },
-        { id: 3, type: 'urgent', html: { __html: getLatestNotification() } }
-      ]
-    };
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
-  }
+    };
 
   handleDisplayDrawer() {
     this.props.dispatch(showDrawer());
@@ -61,12 +48,6 @@ class App extends Component {
     }
   }
 
-  markNotificationAsRead(id) {
-    this.setState({
-      listNotifications: this.state.listNotifications.filter(notification => notification.id !== id)
-    });
-  }
-
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyPress);
   }
@@ -77,37 +58,28 @@ class App extends Component {
 
 
   render() {
-    const { user, listNotifications } = this.state;
-    const { displayDrawer, displayNotificationDrawer, hideNotificationDrawer } = this.props;
+    const { displayDrawer } = this.props;
 
     return (
-      <AppContext.Provider value={{ user, logOut: this.logOut }}>
-        <div className="menuItem" onClick={displayNotificationDrawer}>Toggle Notifications</div>
-        <Notifications
-          displayDrawer={displayDrawer}
-          handleDisplayDrawer={handleDisplayDrawer}
-          handleHideDrawer={hideNotificationDrawer}
-          listNotifications={listNotifications}
-          markNotificationAsRead={this.markNotificationAsRead}
-        />
-
-        <div className={css(styles.app)}>
-          <Header />
-          {isLoggedIn ? (
-            <BodySectionWithMarginBottom title="Course list">
-              <CourseList />
-            </BodySectionWithMarginBottom>
-          ) : (
-            <BodySectionWithMarginBottom title="Log in to continue">
-              <Login logIn={this.logIn} />
-            </BodySectionWithMarginBottom>
-          )}
-          <BodySection title="News from the School">
-            <p>Your random text here</p>
-          </BodySection>
-          <Footer />
-        </div>
-      </AppContext.Provider>
+      <div className={css(styles.app)}>
+        <div className="menuItem" onClick={this.handleDisplayDrawer}>Toggle Notifications</div>
+        <Notifications displayDrawer={displayDrawer} handleHideDrawer={this.handleHideDrawer} />
+        <Header />
+        // Asegurándose de que la lógica condicional basada en isLoggedIn se maneje correctamente
+        {this.props.isLoggedIn ? (
+          <BodySectionWithMarginBottom title="Course list">
+            <CourseList />
+          </BodySectionWithMarginBottom>
+        ) : (
+          <BodySectionWithMarginBottom title="Log in to continue">
+            <Login login={this.props.login} />
+          </BodySectionWithMarginBottom>
+        )}
+        <BodySection title="News from the School">
+          <p>Your random text here</p>
+        </BodySection>
+        <Footer />
+      </div>
     );
   }
 }
